@@ -59,9 +59,8 @@ English (en).
 
 ## Website / support links
 
-Fill in with whatever you actually have (do this before submitting — the Store rewards listings with these filled in):
-- Homepage / support URL: e.g. a GitHub repo URL if you plan to publish the source
-- Support email: an address you'll actually monitor
+- Homepage / support URL: https://github.com/tutkutashkan/webpage2epub
+- Support email: tutkutashkan@gmail.com (swap for a dedicated address later if you'd rather not use your personal inbox)
 
 ## Screenshots (1–5 required, 1280×800 or 640×400 px, PNG/JPEG)
 
@@ -132,11 +131,11 @@ For the required certification questions:
 
 ### Privacy policy
 
-Because the extension collects "website content" (even though only locally and never transmitted), Chrome's dashboard will require a privacy policy URL before it lets you publish. You don't have one in the repo yet — you'll need to write and host one (e.g., a page on your support site or a GitHub Pages doc) before submitting. It can be short; it just needs to state, accurately:
-- What data is read (page content/HTML/images of pages the user adds)
-- That it's processed locally on-device and never transmitted to any server you control
-- That the optional image-fetching permission only talks to the origins the images are already hosted on
-- That nothing is sold or shared with third parties
+Drafted at [PRIVACY.md](../PRIVACY.md) and pushed to the repo. Use this URL in the dashboard's privacy policy field:
+
+> https://github.com/tutkutashkan/webpage2epub/blob/main/PRIVACY.md
+
+(GitHub's raw markdown rendering is a normal, publicly reachable page — accepted by the Store. If you'd rather have it render without GitHub's chrome around it, enable GitHub Pages for this repo and link the Pages URL instead.)
 
 ### Remote code
 
