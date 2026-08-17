@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Convert2EPUB — reading list</title>
+    <link rel="stylesheet" href="tokens.css" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="header">
+      <span class="wordmark">convert<span class="mark">2</span>epub</span>
+      <p class="eyebrow">Reading list</p>
+    </header>
+
+    <button id="add" class="btn btn-secondary" type="button">
+      Add this page
+    </button>
+
+    <div class="list-card">
+      <ul id="list"></ul>
+    </div>
+
+    <p id="reorder-hint" class="hint">Drag to reorder chapters.</p>
+    <p id="empty-hint" class="hint">
+      No pages yet. Add the page you're reading, then keep adding as you go.
+    </p>
+
+    <label class="field-label" for="book-title">Book title</label>
+    <input id="book-title" type="text" placeholder="Optional" />
+
+    <button id="save" class="btn btn-accent" type="button" disabled>
+      Save as EPUB
+    </button>
+
+    <p id="status" role="status" aria-live="polite"></p>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

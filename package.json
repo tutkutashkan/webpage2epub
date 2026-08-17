@@ -1,0 +1,27 @@
+{
+  "name": "webpage2epub-book-extension",
+  "version": "0.0.1",
+  "description": "Collect web pages into a reading list and save them as a single EPUB book",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsx scripts/build.ts",
+    "build:chrome": "tsx scripts/build.ts chrome",
+    "build:firefox": "tsx scripts/build.ts firefox",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "html2epub": "github:webpagetoepub/html2epub#8625f81278045786214b9511d6a4be7908e7ae9e",
+    "jepub": "^2.5.0",
+    "jszip": "^3.10.1",
+    "webextension-polyfill": "^0.12.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.287",
+    "@types/node": "^22.10.0",
+    "@types/webextension-polyfill": "^0.12.1",
+    "esbuild": "^0.24.0",
+    "tsx": "^4.22.4",
+    "typescript": "^5.7.0"
+  }
+}

@@ -1,0 +1,215 @@
+/* Convert2EPUB design tokens, carried into the extension so the popup is the
+   same surface as convert2epub.com. Values are copied verbatim from the design
+   system's tokens/ directory; this file is the subset the popup actually uses,
+   under the system's own names, so anything added later can reach for a token
+   that already means the right thing.
+
+   Fonts are local (see src/fonts/README.md) rather than the system's Google
+   Fonts @import: a popup should not make a network request every time it opens. */
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("fonts/newsreader-latin.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("fonts/instrument-sans-latin.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/jetbrains-mono-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light dark;
+
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Ink — text and structure, warm-black like print on paper */
+  --ink-900: #16130f;
+  --ink-800: #241f19;
+  --ink-700: #3d372f;
+  --ink-600: #544c41;
+  --ink-500: #6b6255;
+  --ink-400: #8b8171;
+  --ink-300: #a79c8c;
+  --ink-200: #c9c0b1;
+  --ink-100: #e2dbcd;
+
+  /* Paper — surfaces */
+  --paper-0: #ffffff;
+  --paper-50: #fdfaf5;
+  --paper-100: #f7f1e7;
+  --paper-200: #efe7d9;
+
+  /* Spine — primary brand green (bound-book cloth) */
+  --spine-700: #1d4438;
+  --spine-600: #255445;
+  --spine-500: #2e6553;
+  --spine-400: #468474;
+  --spine-100: #d6e7e0;
+  --spine-50: #ecf4f1;
+
+  /* Semantic */
+  --success-500: #3f7d5c;
+  --success-50: #e7f2eb;
+  --danger-500: #b3402a;
+  --danger-50: #f8e3de;
+
+  /* Semantic aliases — always prefer these in components */
+  --text-strong: var(--ink-900);
+  --text-body: var(--ink-700);
+  --text-muted: var(--ink-500);
+  --text-faint: var(--ink-400);
+
+  --surface-page: var(--paper-50);
+  --surface-card: var(--paper-0);
+  --surface-sunken: var(--paper-100);
+  /* Row hover and ghost-control wash — the one surface that has to move in
+     the opposite direction per scheme (down toward cream, up out of black). */
+  --surface-hover: var(--paper-50);
+  --surface-wash: var(--paper-100);
+
+  /* Brand green wherever it's a mark or an indicator rather than a filled
+     button: the wordmark's "2", the drag-drop insertion rule. */
+  --brand-accent: var(--spine-500);
+
+  --border-hairline: var(--ink-100);
+  --border-default: var(--ink-200);
+  --border-strong: var(--ink-300);
+  --border-focus: var(--spine-500);
+
+  --action-primary-bg: var(--ink-900);
+  --action-primary-bg-hover: var(--ink-800);
+  --action-primary-fg: var(--paper-50);
+  --action-secondary-bg: var(--paper-0);
+  --action-secondary-fg: var(--ink-900);
+  --action-accent-bg: var(--spine-500);
+  --action-accent-bg-hover: var(--spine-600);
+  --action-accent-fg: #ffffff;
+
+  --focus-ring: 0 0 0 3px color-mix(in oklab, var(--spine-500) 28%, transparent);
+
+  /* Type scale */
+  --text-title: 24px;
+  --text-body-size: 17px;
+  --text-body-s: 15px;
+  --text-caption: 13px;
+  --text-micro: 11px;
+
+  --leading-title: 1.22;
+  --leading-body: 1.55;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  --tracking-display: -0.02em;
+  --tracking-eyebrow: 0.12em;
+
+  --type-caption: var(--weight-medium) var(--text-caption) / 1.4 var(--font-body);
+  --type-eyebrow: var(--weight-semibold) var(--text-micro) / 1.2 var(--font-body);
+
+  /* Spacing — 4px base */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+
+  --control-h-s: 32px;
+  --control-h-m: 40px;
+  --control-pad-x: 18px;
+
+  /* Radii */
+  --radius-xs: 6px;
+  --radius-s: 10px;
+  --radius-m: 14px;
+  --radius-l: 20px;
+  --radius-pill: 999px;
+
+  /* Shadows — low, warm, single-source (light from above) */
+  --shadow-s: 0 1px 2px rgba(22, 19, 15, 0.06), 0 1px 1px rgba(22, 19, 15, 0.04);
+  --shadow-m: 0 2px 4px rgba(22, 19, 15, 0.05),
+    0 6px 16px -6px rgba(22, 19, 15, 0.1);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.3, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --press-scale: 0.985;
+}
+
+/* ---- Dark ---------------------------------------------------------------
+
+   The design system defines no dark palette — it is paper-and-ink, one light
+   surface. Rather than invent a neutral grey theme that would look like a
+   different product, this inverts the system's own idea: the page becomes the
+   ink slab the site already uses for its footer, and "paper" becomes the warm
+   near-black surfaces sitting on it. Every value is derived from the existing
+   ramps, so the popup stays recognisably Convert2EPUB in either scheme.
+
+   Only the semantic aliases are re-pointed. The raw ink/paper/spine ramps keep
+   their published values, so anything referring to `--spine-500` still gets
+   the brand green rather than a silently different colour.
+
+   Two adjustments the ramps can't supply directly:
+   - Text and surfaces are warm-tinted near-blacks, not the pure ink-900, so
+     the surface/page separation survives without a border on every element.
+   - Spine-500 is too dark to read on a dark page, so accents and the green
+     button move up the ramp to spine-400, which holds contrast against it. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-strong: #f4efe6;
+    --text-body: #ddd5c7;
+    --text-muted: #a99e8c;
+    --text-faint: #8b8171;
+
+    --surface-page: #17150f;
+    --surface-card: #211e17;
+    --surface-sunken: #2b2720;
+    --surface-hover: #2a261e;
+    --surface-wash: #322d24;
+
+    --brand-accent: #6aa695;
+
+    --border-hairline: #332e25;
+    --border-default: #443d31;
+    --border-strong: #5a5142;
+    --border-focus: var(--spine-400, #468474);
+
+    --action-secondary-bg: #211e17;
+    --action-secondary-fg: #f4efe6;
+    /* Spine-400 rather than -500: the darker green disappears into the page. */
+    --action-accent-bg: #468474;
+    --action-accent-bg-hover: #589a88;
+    --action-accent-fg: #0d1c17;
+
+    /* Semantic tints become low-alpha washes of their hue — the light -50
+       tints are far too bright to sit on an ink page. */
+    --success-500: #7bbd97;
+    --success-50: #1b2b22;
+    --danger-500: #e8907c;
+    --danger-50: #33201b;
+
+    --focus-ring: 0 0 0 3px color-mix(in oklab, #468474 40%, transparent);
+
+    /* Shadows do almost no work on a dark surface; borders carry the
+       structure instead, so these drop to near-nothing rather than smearing
+       black on black. */
+    --shadow-s: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-m: 0 2px 6px rgba(0, 0, 0, 0.45);
+  }
+}
