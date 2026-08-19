@@ -2,7 +2,7 @@
   "name": "webpage2epub-book-extension",
   "version": "0.0.1",
   "description": "Collect web pages into a reading list and save them as a single EPUB book",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "scripts": {
     "build": "tsx scripts/build.ts",

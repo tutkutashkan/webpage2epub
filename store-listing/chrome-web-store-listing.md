@@ -112,6 +112,7 @@ The dashboard asks for a one- or two-sentence justification per requested permis
 | `activeTab` | Needed to read the content of the page the user is currently viewing when they click "Add this page," so it can be turned into a chapter. |
 | `scripting` | Needed to run the content-extraction script that pulls readable article content and images out of the active tab. |
 | `downloads` | Needed to save the generated `.epub` file to the user's device once they click "Save as EPUB." |
+| `offscreen` | Chrome service workers have no DOM context. Needed to run the EPUB conversion library (which uses DOMParser, XMLSerializer, and other DOM APIs) in a hidden offscreen document when the user saves a book. This document is not visible to the user and closes automatically once conversion completes. |
 | `contextMenus` | Adds "Add page to ePub book" and "Save ePub book now" to the right-click menu, mirroring the popup's two actions. |
 | `storage` | Needed to keep the in-progress reading list (queued pages) between browser sessions until the user saves or clears it. |
 | `unlimitedStorage` | A queued reading list can include several full articles and images, which can exceed the default 5MB storage quota; this permission avoids failed saves on longer lists. |

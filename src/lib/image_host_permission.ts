@@ -14,24 +14,28 @@ import browser from "./browser";
 // produces a complete book, just with fewer real images.
 const IMAGE_HOST_PERMISSIONS = { origins: ["<all_urls>"] };
 
-export function hasImageHostAccess(): Promise<boolean> {
-  return browser.permissions.contains(IMAGE_HOST_PERMISSIONS);
-}
-
 /**
- * Ask the browser for cross-origin fetch access, if not already granted.
- * Must be called synchronously from a user-gesture handler (a click), which
- * is why both call sites — the popup's Save button and the "Save ePub book
- * now" context-menu item — request it as their first step rather than after
- * any other await.
+ * Ask the browser for cross-origin fetch access. Must be called
+ * synchronously from a user-gesture handler (a click) — no `await` before
+ * this call, not even a fast one — which is why both call sites — the
+ * popup's Save button and the "Save ePub book now" context-menu item —
+ * request it as their very first step.
+ *
+ * There's deliberately no "already granted?" pre-check here: an earlier
+ * version called permissions.contains() first and only requested if that
+ * came back false. That contains() call resolves in a couple of
+ * milliseconds, but Firefox still counts it as an intervening await and
+ * spends the click's transient activation on it — request() then fails with
+ * "may only be called from a user input handler", confirmed by testing a
+ * real Firefox build. permissions.request() already resolves immediately
+ * without prompting when every requested permission is already held (per the
+ * WebExtensions spec, honoured by both browsers), so the pre-check bought
+ * nothing and broke Firefox for it.
  *
  * @example
  *   const granted = await ensureImageHostAccess();
  */
 export async function ensureImageHostAccess(): Promise<boolean> {
-  if (await hasImageHostAccess()) {
-    return true;
-  }
   try {
     return await browser.permissions.request(IMAGE_HOST_PERMISSIONS);
   } catch {
